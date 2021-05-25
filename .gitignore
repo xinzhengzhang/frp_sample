@@ -1,3 +1,4 @@
 bazel-*
 *.xcodeproj
+*.tulsiconf-user
 .DS_Store
