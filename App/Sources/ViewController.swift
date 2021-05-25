@@ -83,7 +83,7 @@ extension State {
 
 extension State {
     var nextPageIndexRequest: Int? {
-        return self.should_next ? self.pageIndex : nil
+        return should_next ? pageIndex : nil
     }
 }
 
@@ -122,10 +122,10 @@ class ViewController : UIViewController {
             0
         }
         
-        let jummper = Binder<Up>(self) { _, up in
+        let jummper = Binder<Up>(self) { me, up in
             let target = DetailViewController(mid: up.mid, followed: up.followed)
             target.modalPresentationStyle = .popover
-            self.present(target, animated: true, completion: nil)
+            me.present(target, animated: true, completion: nil)
         }
         
         let configureCell = { (tableView: UITableView, row: Int, up: Up) -> UITableViewCell in
@@ -145,7 +145,7 @@ class ViewController : UIViewController {
                     }
                     return nil
                 }.drive(me.emptyLabel.rx.textOrHide),
-                state.map { $0.results }.drive(self.tableView.rx.items)(configureCell),
+                state.map { $0.results }.drive(me.tableView.rx.items)(configureCell),
                 state.map { $0.selectedUp }.compactMap { $0 }.drive(jummper)
             ]
 
@@ -154,14 +154,14 @@ class ViewController : UIViewController {
                     if state.should_next {
                         return Signal.empty()
                     }
-                    return self.tableView.rx.nearBottom
+                    return me.tableView.rx.nearBottom
                         .skip(1)
                         .map { _ in Event.nextPage }
                 },
-                self.tableView.rx.itemSelected.asSignal().map { Event.select($0) },
-                self.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.resetSelect },
+                me.tableView.rx.itemSelected.asSignal().map { Event.select($0) },
+                me.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.resetSelect },
 
-                self.tableView.rx.delegate.methodInvoked(#selector(UITableViewDelegate.scrollViewDidScrollToTop(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.reset }
+                me.tableView.rx.delegate.methodInvoked(#selector(UITableViewDelegate.scrollViewDidScrollToTop(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.reset }
 
             ]
             return Bindings(subscriptions: subscriptions, events: events)

@@ -14,8 +14,8 @@ import Stevia
 
 class DetailViewController : UIViewController {
     private let disposeBag = DisposeBag()
-    var mid: Int
-    var followed: BehaviorRelay<Bool>
+    let mid: Int
+    let followed: BehaviorRelay<Bool>
 
     init(mid: Int, followed: BehaviorRelay<Bool>) {
         self.mid = mid
