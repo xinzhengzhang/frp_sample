@@ -1,0 +1,67 @@
+{
+  "additionalFilePaths" : [
+    "App/BUILD"
+  ],
+  "buildTargets" : [
+    "//App:Sources",
+    "//App:app"
+  ],
+  "optionSet" : {
+    "BazelBuildOptionsDebug" : {
+      "p" : "$(inherited)"
+    },
+    "BazelBuildOptionsRelease" : {
+      "p" : "$(inherited)"
+    },
+    "BazelBuildStartupOptionsDebug" : {
+      "p" : "$(inherited)"
+    },
+    "BazelBuildStartupOptionsRelease" : {
+      "p" : "$(inherited)"
+    },
+    "BuildActionPostActionScript" : {
+      "p" : "$(inherited)"
+    },
+    "BuildActionPreActionScript" : {
+      "p" : "$(inherited)"
+    },
+    "CommandlineArguments" : {
+      "p" : "$(inherited)"
+    },
+    "EnvironmentVariables" : {
+      "p" : "$(inherited)"
+    },
+    "LaunchActionPostActionScript" : {
+      "p" : "$(inherited)"
+    },
+    "LaunchActionPreActionScript" : {
+      "p" : "$(inherited)"
+    },
+    "ProjectGenerationBazelStartupOptions" : {
+      "p" : "$(inherited)"
+    },
+    "TestActionPostActionScript" : {
+      "p" : "$(inherited)"
+    },
+    "TestActionPreActionScript" : {
+      "p" : "$(inherited)"
+    }
+  },
+  "projectName" : "Frp_sample",
+  "sourceFilters" : [
+    "App",
+    "App/Resources/...",
+    "App/Sources/...",
+    "external",
+    "external/rxfeedback/...",
+    "external/rxfeedback/Sources",
+    "external/rxfeedback/Sources/RxFeedback",
+    "external/rxswift/...",
+    "external/rxswift/Sources",
+    "external/rxswift/Sources/RxCocoa",
+    "external/rxswift/Sources/RxCocoaRuntime",
+    "external/rxswift/Sources/RxCocoaRuntime/include",
+    "external/rxswift/Sources/RxRelay",
+    "external/rxswift/Sources/RxSwift"
+  ]
+}

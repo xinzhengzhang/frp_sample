@@ -1,0 +1,12 @@
+{
+  "configDefaults" : {
+    "optionSet" : {
+
+    }
+  },
+  "packages" : [
+    "App"
+  ],
+  "projectName" : "Frp_sample",
+  "workspaceRoot" : ".."
+}

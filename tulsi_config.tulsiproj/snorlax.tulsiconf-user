@@ -1,0 +1,10 @@
+{
+  "optionSet" : {
+    "BazelPath" : {
+      "p" : "/usr/local/bin/bazel"
+    },
+    "WorkspaceRootPath" : {
+      "p" : "/Users/snorlax/Documents/bilibili/sharer/exercise_based_on_mobile_frp/Sample"
+    }
+  }
+}

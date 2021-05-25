@@ -203,8 +203,9 @@ package(default_visibility = ["//visibility:public"])
 swift_library(
     name = "RxFeedback",
     srcs = glob([
-        "Sources/*.swift",
+        "Sources/**/*.swift",
     ]),
+    deps = ["@rxswift//:RxCocoa"],
     module_name = "RxFeedback",
 )
 """,
