@@ -39,7 +39,7 @@ fileprivate struct State {
 
 fileprivate enum Event {
     case initialize
-//    case reset
+    case reset
     case nextPage
     case response([Up], Error?)
     case select(IndexPath)
@@ -54,8 +54,8 @@ extension State {
         switch event {
         case .initialize:
             return State.empty
-//        case .reset:
-//            return State.empty
+        case .reset:
+            return State.empty
         case .nextPage:
             var result = state
             result.should_next = true
@@ -159,9 +159,9 @@ class ViewController : UIViewController {
                         .map { _ in Event.nextPage }
                 },
                 self.tableView.rx.itemSelected.asSignal().map { Event.select($0) },
-                self.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.resetSelect }
+                self.rx.methodInvoked(#selector(UIViewController.viewDidDisappear(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.resetSelect },
 
-//                self.tableView.rx.delegate.methodInvoked(#selector(UITableViewDelegate.scrollViewDidScrollToTop(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.reset }
+                self.tableView.rx.delegate.methodInvoked(#selector(UITableViewDelegate.scrollViewDidScrollToTop(_:))).asSignal(onErrorJustReturn: []).map { _ in Event.reset }
 
             ]
             return Bindings(subscriptions: subscriptions, events: events)
