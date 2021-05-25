@@ -18,8 +18,13 @@ exports_files([
 
 swift_library(
     name = "Sources",
-    srcs = [
-        "Sources/AppDelegate.swift",
+    srcs = glob([
+        "Sources/*.swift",
+    ]),
+    deps = [
+        "@rxfeedback//:RxFeedback",
+        "@rxswift//:RxCocoa",
+        "@stevia//:Stevia",
     ],
     data = [
         "Resources/Main.storyboard",
